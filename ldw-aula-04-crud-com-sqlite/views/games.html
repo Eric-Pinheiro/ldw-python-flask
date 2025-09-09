@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Essa é a pagina de games</h2>
+    <h3>Jogo em destaque</h3>
+    <ul>
+        <li>{{title}}</li>
+        <li>{{year}}</li>
+        <li>{{category}}</li>
+    </ul>
+    <p>O jogo {{title}} tem {{2025-year}} anos.</p>
+    <h3>Está sendo jogado por: </h3>
+    <ol>
+        {%for player in players  %}
+        <li>   {{player}}</li>
+        {% endfor %}
+    </ol>
+    <hr>
+    <form action="{{url_for('games')}}" method="post">
+      <label for="player"></label>
+      <input type="text" name="player" class="form-control">
+      <input type="submit" value="Entrar" class="btn btn-success">
+    </form>
+    <h4>{% for key, value in console.items() %}
+{{key}}: {{value}} <br>
+        {% endfor %}
+    </h4>
+    <hr />
+{% endblock content%}

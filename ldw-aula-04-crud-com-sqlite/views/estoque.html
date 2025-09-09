@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Controle de estoque</h2>
+<hr>
+<details>
+    <summary>[Cadastro de jogos]</summary>
+    <div class="col-md-4">
+        <form action="{{url_for('estoque')}}" method="post">
+            <input class="form-control" type="text" name="title" placeholder="Titulo" required>
+            <input class="form-control" type="number" name="year" placeholder="Ano" required>
+            <input class="form-control" type="text" name="category" placeholder="Categoria" required>
+            <input class="form-control" type="text" name="platform" placeholder="Plataforma" required>
+            <input class="form-control" type="number" name="price" placeholder="Preço" required>
+            <input class="form-control" type="number" name="quantity" placeholder="Quantidade" required>
+            <input class="btn btn-success" type="submit" value="Cadastrar">
+            <input class="btn btn-danger" type="reset" value="Limpar">
+        </form>
+    </div>
+</details>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Categoria</th>
+            <th>Plataforma</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th colspan="2">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for game in gamesEstoque %}
+    <tr>
+        <td>{{game.title}}</td>
+        <td>{{game.year}}</td>
+        <td>{{game.category}}</td>
+        <td>{{game.platform}}</td>
+        <td>{{game.price}}</td>
+        <td>{{game.quantity}}</td>
+        <td><a href="{{url_for('edit', id=game.id)}}"><button class="btn">Editar</button></a></td>
+        <td><a href="{{url_for('estoque', id=game.id)}}" onclick="return confirm('Deseja mesmo excluir o jogo {{game.title}}?')"><button class="btn">Excluir</button></a></td>
+    
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

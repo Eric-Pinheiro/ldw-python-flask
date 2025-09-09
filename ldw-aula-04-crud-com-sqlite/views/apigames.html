@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="background-color: aquamarine; border-radius: 8px;">
+    <div class="row">
+        {% for game in gameList %}
+        <div class="col md-3 m-auto">
+<div class="card" style="width: 16rem;">
+    
+
+        <img src="{{game.thumbnail}}" alt="">
+        <div class="card-body">
+            <h5>{{game.title}}</h5>
+            <p>{{game.genre}}</p>
+            <p>{{game.platform}}</p>
+            <a class="btn btn-dark" href="{{url_for('apigames', id=game.id)}}">Mais informações</a>
+        </div>
+</div>
+        </div>
+{% endfor %}
+    </div>
+</div>
+{% endblock content %}
