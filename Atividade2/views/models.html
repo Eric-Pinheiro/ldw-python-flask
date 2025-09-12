@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Modelos</h2>
+    <div class="row">
+        {% for model in models %}
+        <div class="col-md-3 m-2 p-2 border rounded">
+            <img src="https://source.unsplash.com/400x300/?car,{{ model.Make_Name}}-{{ model.Model_Name}}" 
+                     class="card-img-top" 
+                     alt="{{ model.Make_Name }} {{ model.Model_Name }}">
+            <h5>{{ model.Model_Name }}</h5>
+            <p>Fabricante: {{ model.Make_Name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
