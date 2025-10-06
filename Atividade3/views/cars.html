@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+   
+    
+    <div class="row text-center pt-5 pb-2">
+        <div class="col">
+            <h1>Lista de carros</h1>
+        </div>
+    </div>
+    <div class="row pt-3 pb-1">
+        <div class="col-4 text-center">
+            <h3>Carros em alta</h3>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row text-center py-4 d-flex justify-content-evenly">
+      {% for carro in carros %}
+  <div class="col-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{carro.Marca}}</h5>
+                    <p class="card-text">{{carro.Modelo}} <br> {{carro.Ano}}</p>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+ 
+    
+    </div>
+    <div class="row pt-3 pb-1">
+        <div class="col-4 text-center">
+            <h3>Modelos que estão chegando</h3>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row text-center py-4 d-flex justify-content-evenly">
+       <div class="col-3"></div>
+        <div class="col-6 d-flex justify-content-center">
+            {% for car in modelos %}
+            <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    {{car}}
+  </div>
+</div>
+         
+            {% endfor %}
+        </div>
+       <div class="col-3"></div>
+    </div>
+
+</div>
+<div class="container-fluid bg-dark text-light">
+    <div class="row pt-3 pb-1">
+        <div class="col-4 text-center">
+            <h3>Inserção de dados</h3>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row text-center py-4 d-flex justify-content-evenly">
+        <div class="col-3 d-flex justify-content-center">
+            <form action="{{url_for('cars')}}" method="post">
+                <label class="form-label" for="modelo"><h4>Modelo:</h4></label>
+                <input class="form-control" type="text" name="modelo">
+                <input type="submit" class="btn btn-success" value="Enviar">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

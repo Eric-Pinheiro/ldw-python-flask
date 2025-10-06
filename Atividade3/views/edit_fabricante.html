@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Editar Fabricante</h2>
+
+  <form method="post" class="card p-4">
+    <div class="mb-3">
+      <label>Nome do Fabricante</label>
+      <input type="text" class="form-control" name="fabricante" value="{{ fabricante.fabricante }}" required>
+    </div>
+    <button class="btn btn-success">Salvar Alterações</button>
+    <a href="{{ url_for('fabricantes') }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Marcas</h2>
+    <div class="row">
+        {% for make in makes %}
+        <div class="col-md-3 m-2 p-2 border rounded">
+            <img src="https://source.unsplash.com/400x300/?car,{{ make.Make_Name }}" class="card-img-top" alt="Carro {{ make.Make_Name }}">
+            <h5>{{ make.Make_Name }}</h5>
+            <a class="btn btn-dark" href="{{ url_for('api_cars', make_id=make.Make_ID) }}">
+                Ver modelos
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

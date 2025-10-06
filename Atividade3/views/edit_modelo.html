@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Editar Modelo</h2>
+
+  <form method="post" class="card p-4">
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label>Marca</label>
+        <input type="text" class="form-control" name="marca" value="{{ modelo.marca }}" required>
+      </div>
+      <div class="col-md-4">
+        <label>Modelo</label>
+        <input type="text" class="form-control" name="modelo" value="{{ modelo.modelo }}" required>
+      </div>
+      <div class="col-md-2">
+        <label>Ano</label>
+        <input type="number" class="form-control" name="ano" value="{{ modelo.ano }}" required>
+      </div>
+      <div class="col-md-2">
+        <label>Fabricante</label>
+        <select name="maker_id" class="form-select" required>
+          {% for maker in makers %}
+            <option value="{{ maker.id }}" {% if maker.id == modelo.maker_id %}selected{% endif %}>
+              {{ maker.fabricante }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <label>Imagem (URL)</label>
+    <input type="text" class="form-control mb-3" name="image" value="{{ modelo.image }}">
+    <button class="btn btn-success">Salvar Alterações</button>
+    <a href="{{ url_for('modelos') }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock content %}
